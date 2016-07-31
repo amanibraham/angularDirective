@@ -1,5 +1,5 @@
-angular.module('amanibraham.checkEmail',[])
-.directive('checkEmail', function() {
+angular.module('amanibraham.checkEmail',['toastr'])
+.directive('checkEmail', function(toastr) {
 
     var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
  
@@ -13,11 +13,13 @@ angular.module('amanibraham.checkEmail',[])
     
               if(EMAIL_REGEXP.test(element.val()))
               {
-                  console.log('Valid email!');
+                  console.log(':) Valid email!');
+				   toastr.success('', 'Valid email!');
               }
               else
               {            
-                  console.log('Invalid email!');
+                  console.log(':( Invalid email!');
+				   toastr.error('', 'Invalid email!');
               }
             
           });
